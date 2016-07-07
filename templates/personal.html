@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load extra_filters %}
+{% block title %}Personal{% endblock %}
+{% block content %}
+    <div class="center-block content_block">
+        {%  for date in dates %}
+            <div class="panel panel-default" data-pk="{{ date.pk }}">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col-sm-2">
+                          <h5><strong>Дата:</strong> {{ date.data }}</h5>
+                      </div>
+                      <div class="col-sm-offset-2 col-sm-3">
+                          <div class="input-group">
+                              <span class="input-group-addon">Цель</span>
+                              <input type="text" data-val="{{ date.goal }}" class="form-control" value="{{ date.goal }}">
+                              <div class="input-group-btn">
+                                <button class="btn btn-primary change_goal">Изменить</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-offset-4 col-sm-1">
+                          <button type="button" class="btn btn-success btn-sm btn_add_record">
+                                <span class="glyphicon glyphicon-plus span_sm"></span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <!-- Table -->
+              <table class="table table-hover">
+                  <thead class="thead-default">
+                    <tr>
+                        <th class="col-sm-1">№</th>
+                        <th class="col-sm-6">Описание</th>
+                        <th class="col-sm-1">Каллории</th>
+                        <th class="col-sm-1"></th>
+                        <th class="col-sm-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        {% for record in date.records.all %}
+                            <tr data-record={{ record.pk }}>
+                                <td class="loop">{{ forloop.counter }}</td>
+                                <td class="description">
+                                    <span class="description">{{ record.description }}</span>
+                                </td>
+                                <td class="score">
+                                    <p class="text-center">
+                                        <span class="score">
+                                            {{ record.amount }}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="option">
+                                    <div class="correct_option">
+                                        <button type="button" class="btn btn-success btn-xs btn_send_record">
+                                            <span class="glyphicon glyphicon-ok span_xs"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-xs btn_cancel_send_record">
+                                            Отмена
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-xs btn_correct_record">
+                                        <span class="glyphicon glyphicon-pencil span_xs"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs btn_remove_record">
+                                        <span class="glyphicon glyphicon-remove span_xs"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                  </tbody>
+              </table>
+              <div class="panel-footer">
+                  <p class="text-right">
+                      <strong>
+                          Итого:
+                      </strong>
+                      <span class="result_word">
+                        {% if date.sign %}
+                          недобор
+                        {% else %}
+                          перебор
+                        {% endif %}
+                      </span>
+                      <span class="result">
+                          {{date|odd}}
+                      </span> Ккалорий
+                  </p>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form_div">
+        <h4>Вы действительно желаете удалить Данную запись?</h4>
+        <form method="post" class="form_del_subject">
+            {% csrf_token %}
+            <input type="hidden" name="record" id="record_del">
+            <button type="button" class="btn btn-danger btn_submit_remove_record col-sm-offset-2">Удалить</button>
+            <button type="button" class="btn btn-warning  cancel_remove_record col-sm-offset-2">Отмена</button>
+        </form>
+    </div>
+    <div class="alert alert-success push" role="alert">
+        <h4>Успех!</h4>
+    </div>
+{% endblock %}

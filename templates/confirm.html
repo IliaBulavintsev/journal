@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Confirm{% endblock %}
+{% block content %}
+    <div class="center-block content_block">
+        <div class="alert alert-success" role="alert">
+            Почта подтверждена! Войдите в
+            <a href={% url 'log_in' %}>личный кабинет</a>!
+        </div>
+    </div>
+{% endblock %}

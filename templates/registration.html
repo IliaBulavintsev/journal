@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="auth_form center-block ">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a>Регистрация</a></li>
+        </ul>
+        <form class="form-horizontal form_registration">
+          <div class="form-group">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Логин</label>
+                <input class="form-control" id="username" name="username" placeholder="Логин">
+            </div>
+            <div class="form-group">
+                <label for="email1">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль еще раз</label>
+                <input type="password" class="form-control" id="password_repeat" name="password" placeholder="Парол еще раз">
+            </div>
+            <button type="button" class="btn btn-success button_submit_register">Зарегистрироваться</button>
+          </div>
+        </form>
+    </div>
+    <div class="alert alert-success push" role="alert">
+        <h4>Успех!</h4>
+    </div>
+{% endblock %}

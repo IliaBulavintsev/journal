@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} SignUp! {% endblock %}
+{% block content %}
+    <div class="auth_form center-block ">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a>Авторизация</a></li>
+            <li role="presentation"><a href="{% url 'register' %}">Регистрация</a></li>
+        </ul>
+        <form class="login_form" action="">
+            <div>login</div>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts%}
+{% endblock %}

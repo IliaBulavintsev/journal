@@ -1,0 +1,45 @@
+.auth_form{
+    width: 300px;
+}
+
+.user_head{
+    margin-top: 15px;
+}
+
+.login_span{
+    margin-right: 10px;
+}
+.content_block{
+    width: 70%;
+}
+
+.gly_input{
+    margin-top: -1px;
+}
+
+.form_div{
+    margin-top: 10px;
+    border: 1px solid #C9C9C9;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    width: 30%;
+    padding: 10px;
+    display: none;
+}
+
+.correct_option{
+    display: none;
+    margin-top: 5px;
+}
+
+.push{
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    width: 100px;
+    display: none;
+}
+
+.new_button{
+    margin-right: 5px;
+}
