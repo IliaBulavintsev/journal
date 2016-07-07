@@ -356,7 +356,7 @@ var Personal = (function(){
         var markup = '<tr class="save_record">' +
             '<td class="loop">'+index+'</td>' +
             '<td><input type="text" class="form-control input_set_description" name="set_description" placeholder="Описание"></td>' +
-            '<td><input type="text" class="form-control input_set_score" name="set_score" placeholder="Каллории"></td>' +
+            '<td><input type="number" class="form-control input_set_score" name="set_score" placeholder="Каллории"></td>' +
             '<td>' +
                 '<button type="button" class="btn btn-success btn-xs btn_save_record correct_option">Сохранить</button>' +
             '</td>' +
@@ -376,8 +376,9 @@ var Personal = (function(){
             index = parseInt($(last).children().first().text());
         console.log(index);
         if (isNaN(index)){
-            console.log('clear');
-            $(_formToAdd(1)).insertAfter(tbody);
+            //console.log('clear');
+            $(tbody).html(_formToAdd(1));
+            //$(_formToAdd(1)).insertAfter(tbody);
         } else {
             $(_formToAdd(index+1)).insertAfter(last);
         }
@@ -477,7 +478,7 @@ var Personal = (function(){
             text_val = text.text();
         console.log(text_val);
         console.log(score_val);
-        score.replaceWith('<input type="text" class="form-control input_set_score" data-pre="'+score_val+'" name="set_score" value='+score_val+'>');
+        score.replaceWith('<input type="number" class="form-control input_set_score" data-pre="'+score_val+'" name="set_score" value='+score_val+'>');
         text.replaceWith('<input type="text" class="form-control input_set_description" name="set_description" value="'+text_val+'">');
         $('.input_set_description').data("pre", text_val);
         $('.btn_correct_record').hide();

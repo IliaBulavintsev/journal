@@ -7,7 +7,7 @@ virtualenv:
 заход в консоль -u:юзер -p -h:хост
 	mysql -u root -p -h localhost
 
-CREATE DATABASE `journal_db` /*!40100 DEFAULT CHARACTER SET utf8 */ 
+CREATE DATABASE `journal_db` /*!40100 DEFAULT CHARACTER SET utf8 */; 
 
 создаем юзер:dbuser хост:localhost пароль: 0000
 	GRANT ALL PRIVILEGES ON journal_db.* TO 'dbuser'@'localhost' IDENTIFIED BY '0000';
@@ -17,3 +17,5 @@ CREATE DATABASE `journal_db` /*!40100 DEFAULT CHARACTER SET utf8 */
 
 
 ./manage.py celeryd -l INFO -B
+
+ssh root@ip
